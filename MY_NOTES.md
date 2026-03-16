@@ -94,3 +94,13 @@ Hangman drawing not updating — Display is stuck showing the same state even th
 Continuing after game ends — Accepting guesses after status is "won" or "lost"
 Never reaching "won" state — Checking if revealed_word == secret_word but missing a case where they should be equal
 Incorrect attempt counting — Recording multiple attempts for a single guess, or skipping one
+
+# AUTO PLAY MODE ASSIGNMENT
+Analysis:
+I think the game will stay the same and I only need to implement an extra feature where instead of the user manually inputting the guess, the guess will instead come from the computer.
+
+Design Decisions:
+Add a new boolean parameter auto_play that will be accepted by the play_single_round function.
+To make sure the computer does not repeat guesses, I can create a list of the 26 uppercase alphabet letters at the start of an auto play round and every time the computer guesses a letter, that letter will be removed from the list using .remove().
+The main() loop will need to present a menu at the start of each round, asking if the user wants to Play manually, watch Auto Play, or Quit.
+The computer is finishing the game pretty much instantly (in milliseconds) so I will import the time module and add a time.sleep(1) delay during Auto Play. Now we can actually watch the game occur.
